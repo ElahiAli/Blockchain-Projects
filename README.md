@@ -9,5 +9,5 @@ using SimpleStorage functions and learning how to <strong>intract with another c
 <h4>Third Lesson: FundMe:</h4>
 transaction that can send money and the amount can't be less than 50$.<br/>
 the money can be <strong>withdraw</strong> only by the owner of contract.<br/>
-we also import interface and getting the version and <strong>convert the currency</strong><br/>
+we also import interface and getting the version and <strong>convert the currency</strong> and storing the funders.<br/>
 using <strong>constructor</strong> that immediatly excute after contract excution.
