@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >= 0.6.6 < 0.9.0;
+pragma solidity  ^0.6.0;
 
 //importing interface
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
@@ -12,7 +12,7 @@ contract FundMe{
     //every uint256 would be check.
     using SafeMathChainlink for uint256;
     mapping(address => uint256) public addressToAmountFunded;
-
+    address[] public funders;
     //the address of contract's owner
     address public owner;
 
@@ -27,6 +27,8 @@ contract FundMe{
         require(getConversionRate(msg.value) >= minimumUSD, "you need to spend more ETH!");
         // msg.sender and msg.value are keywords in every contract call and transaction
         addressToAmountFunded[msg.sender] += msg.value ;
+        //array of funders.
+        funders.push(msg.sender);
     }
 
     //getting version of interface
@@ -48,13 +50,26 @@ contract FundMe{
         //devide because of editional 10 raised to 18 track on them. wei
         uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
         return ethAmountInUsd;
-    }
 
-    function withdraw() public payable {
+    }
+    //execute in withdraw before anything.
+    modifier onlyowner {
+        require(msg.sender == owner);
+        _;
+    }
+    function withdraw() payable onlyowner public {
         //transfer function send some amount of ethereum to whoever it's call.
         //this is keyword in solidity and refere to the contract that we're in.here we calling the address of contract.
         //taking back all the money.
-        require(msg.sender == owner);
         msg.sender.transfer(address(this).balance);
+        //after withdraw the value of funder will be 0
+        for(uint256 funderIndex=0; funderIndex < funders.length; funderIndex++){
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+        //resetting funders array.
+        funders = new address[](0);
     }
+
+    
 }
