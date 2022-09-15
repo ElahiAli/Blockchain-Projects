@@ -44,6 +44,7 @@ SimpleStoragee = w3.eth.contract(abi=abi, bytecode=bytecode)
 # Get the latest Transaction
 nonce = w3.eth.getTransactionCount(my_address)
 
+# 1_build Transaction
 transaction = SimpleStoragee.constructor().buildTransaction(
     {
         "chainId": chain_id,
@@ -52,4 +53,6 @@ transaction = SimpleStoragee.constructor().buildTransaction(
         "nonce": nonce,
     }
 )
-print(transaction)
+
+
+signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
