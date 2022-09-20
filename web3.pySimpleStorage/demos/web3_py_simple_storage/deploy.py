@@ -38,9 +38,9 @@ bytecode = compile_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"]
 abi = compile_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
 # for connecting to Ganache
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
+w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
 chain_id = w3.eth.chain_id
-my_address = "0xd090954A433647554D124cb7f5eCD441BfBD7554"
+my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
 private_key = os.getenv("PRIVATE_KEY")
 
 # Create contract in python
@@ -71,12 +71,22 @@ Simple_Storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 
 print(Simple_Storage.functions.retrive().call())
 
-# building store transaction
+# 1 building store transaction
 store_transaction = Simple_Storage.functions.store(15).buildTransaction(
     {
-        "chain_id": chain_id,
+        "chainId": chain_id,
         "from": my_address,
         "nonce": nonce + 1,
         "gasPrice": w3.eth.gas_price,
     }
 )
+# 2 sign store transaction
+sign_store_txn = w3.eth.account.sign_transaction(
+    store_transaction, private_key=private_key
+)
+# 3 send store transaction
+send_store_tx = w3.eth.send_raw_transaction(sign_store_txn.rawTransaction)
+# wait for conformation
+tx_receipt = w3.eth.wait_for_transaction_receipt(send_store_tx)
+
+print(Simple_Storage.functions.retrive().call())
