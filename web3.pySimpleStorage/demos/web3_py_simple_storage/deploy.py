@@ -44,12 +44,13 @@ my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
 private_key = os.getenv("PRIVATE_KEY")
 
 # Create contract in python
-SimpleStoragee = w3.eth.contract(abi=abi, bytecode=bytecode)
+SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
 # Get the latest Transaction
 nonce = w3.eth.getTransactionCount(my_address)
 
 # 1_build Transaction
-transaction = SimpleStoragee.constructor().buildTransaction(
+print("Deploying...")
+transaction = SimpleStorage.constructor().buildTransaction(
     {
         "chainId": chain_id,
         "gasPrice": w3.eth.gas_price,
@@ -68,10 +69,12 @@ tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 
 # working with the contract.
 Simple_Storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
+print("Deployed!")
+print("First amount: ", Simple_Storage.functions.retrive().call())
 
-print(Simple_Storage.functions.retrive().call())
-
+# store Transaction.
 # 1 building store transaction
+print("Updating Store Transaction...")
 store_transaction = Simple_Storage.functions.store(15).buildTransaction(
     {
         "chainId": chain_id,
@@ -89,4 +92,31 @@ send_store_tx = w3.eth.send_raw_transaction(sign_store_txn.rawTransaction)
 # wait for conformation
 tx_receipt = w3.eth.wait_for_transaction_receipt(send_store_tx)
 
-print(Simple_Storage.functions.retrive().call())
+print("Updated amount: ", Simple_Storage.functions.retrive().call())
+print("Store Transaction updated!")
+
+
+# addperson Transaction.
+print("Updating AddPerson Transaction...")
+addperson_txn = Simple_Storage.functions.addperson("sahar", 24).buildTransaction(
+    {
+        "chainId": chain_id,
+        "from": my_address,
+        "nonce": nonce + 2,
+        "gasPrice": w3.eth.gas_price,
+    }
+)
+
+sign_addperson_txn = w3.eth.account.sign_transaction(
+    addperson_txn, private_key=private_key
+)
+
+send_addperson_txn = w3.eth.send_raw_transaction(sign_addperson_txn.rawTransaction)
+addperson_reciept = w3.eth.wait_for_transaction_receipt(send_addperson_txn)
+
+print("People Updated: ", Simple_Storage.functions.people(0).call())
+
+print(
+    "FavoriteNumber Updated: ",
+    Simple_Storage.functions.nameToFavoriteNumber("sahar").call(),
+)
