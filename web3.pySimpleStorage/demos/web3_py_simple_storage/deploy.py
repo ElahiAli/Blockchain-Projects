@@ -106,7 +106,7 @@ addperson_txn = Simple_Storage.functions.addperson("sahar", 24).buildTransaction
         "gasPrice": w3.eth.gas_price,
     }
 )
-
+# sign Transaction.
 sign_addperson_txn = w3.eth.account.sign_transaction(
     addperson_txn, private_key=private_key
 )
