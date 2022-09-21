@@ -2,7 +2,7 @@
 
 pragma solidity ^0.6.0;
 
-//importing interface
+//importing interface.
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
 
 //checking for overflow
