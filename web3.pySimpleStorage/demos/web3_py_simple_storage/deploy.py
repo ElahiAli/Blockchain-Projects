@@ -29,7 +29,7 @@ with open("compiled_code.json", "w") as file:
     json.dump(compile_sol, file)
 
 
-# get bytecode -> this is the pass to get the object of bytecode in compile_sol.
+# get bytecode -> this is the path to get the object of bytecode in compile_sol.
 bytecode = compile_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"][
     "bytecode"
 ]["object"]
