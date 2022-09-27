@@ -1,0 +1,14 @@
+#for third party that imported in FundMe.
+dependencies:
+  #- <organization/repo>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1
+
+#@chainlink repersenting the github address.
+compiler:
+  solc:
+    remappings:
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1'
+
+dotenv: .env
+wallets:
+  from_key: ${PRIVATE_KEY}

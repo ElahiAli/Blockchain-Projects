@@ -52,7 +52,11 @@ contract FundMe {
     }
 
     //1000000000 => 1 Gwei
-    function getConversionRate(uint256 ethAmount) public viewreturns(uint256) {
+    function getConversionRate(uint256 ethAmount)
+        public
+        view
+        returns (uint256)
+    {
         uint256 ethPrice = getPrice();
         //devide because of editional 10 raised to 18 track on them. wei
         uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
