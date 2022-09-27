@@ -1,6 +1,6 @@
 ## Blockchain-Tutorial
 
-### Lesson One: SimpleStorage.sol:</h4>
+### Lesson One: SimpleStorage.sol:<br/>
 store a favorit number and returning it.<br/>
 store array with name and favorit number and returning the favorit number and ...
 ### Lesson Two: StorageFactory.sol:
@@ -21,3 +21,8 @@ installing <strong>brownie</strong> and get familiar to brownie commands and con
 writing scripts and deploy to local and testnet(Goerli).<br/>
 learn how to add custom <strong>network(Goerli)</strong>, and how to work with quicknode.<br/>
 working with pytest and writing some test for our contracts.<br/>
+### Lesson Six: brownie_Fund_Me:<br/>
+deploying FundMe.sol in brownie and interact with its contracts.<br/>
+using different networks in brownie like a custom network ganache-local.<br/>
+working with mocks and mock AggregatorV2V3Interface.<br/>
+
