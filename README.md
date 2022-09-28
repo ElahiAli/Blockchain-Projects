@@ -25,4 +25,6 @@ working with pytest and writing some test for our contracts.<br/>
 deploying FundMe.sol in brownie and interact with its contracts.<br/>
 using different networks in brownie like a custom network ganache-local.<br/>
 working with mocks and mock AggregatorV2V3Interface.<br/>
+forking mainnet and deploy contract and test in it.<br/>
+adding different network like ganache-local to brownie networks.<br/>
 
