@@ -68,6 +68,13 @@ contract FundMe {
         return ethAmountInUsd;
     }
 
+    function getEntranceFee() public view returns (uint256) {
+        uint256 minimumUSD = 50 * 10**18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+        return ((minimumUSD * precision) / price);
+    }
+
     //modifier: https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb
     modifier onlyOwner() {
         //is the message sender owner of the contract?

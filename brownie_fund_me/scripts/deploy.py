@@ -20,6 +20,7 @@ def deploy_fund_me():
 
     fund_me = FundMe.deploy(price_feed_address, {"from": account})
     print(f"Contract Deployed to {fund_me.address}")
+    return fund_me
 
 
 def main():
