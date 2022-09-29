@@ -18,6 +18,12 @@ def withdraw():
     fund_me.withdraw({"from": account})
 
 
+def getPrice():
+    fund_me = FundMe[-1]
+    account = get_account()
+    print("Price: ", fund_me.getPrice({"from": account}))
+
+
 def getVersion():
     fund_me = FundMe[-1]
     account = get_account()
@@ -28,3 +34,4 @@ def main():
     fund()
     withdraw()
     getVersion()
+    getPrice()

@@ -11,7 +11,7 @@ compiler:
 
 dotenv: .env
 networks:
-  goerli:
+  goerli-quick:
     eth_usd_price_feed: '0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e'
   mainnet-fork-dev:
     eth_usd_price_feed: '	0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
