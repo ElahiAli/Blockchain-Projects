@@ -1,0 +1,11 @@
+EVM can access and store information in six places:
+1.stack
+2.Memory : only during the transaction call.
+3.Storage : exist as global variable.perment variabel and can be modify.
+4.Calldata : temporary type that can't be modify.
+5.Code
+6.Logs
+
+array,struct,map is the special type in solidity.
+string is an array.
+
