@@ -4,7 +4,7 @@
 working with remix and compiling contracts.<br/>
 store a favorit number and returning it.<br/>
 store array with name and favorit number and returning the favorit number and ...
-### <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/StorageFactory.sol'>StorageFactory.sol:</a> StorageFactory.sol:
+### <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/StorageFactory.sol'>StorageFactory.sol:</a>
 storing transactions and show the address.<br/>
 using SimpleStorage functions and learning how to <strong>intract with another contract</strong>.<br/>
 we also used <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/ExtraStorage.sol'>inheritance</a> and override store fuction.<br/>
