@@ -16,4 +16,13 @@ for overriding a function we need to add the word "virtual" to the function.
 revert:
 if our require condition is not currect then it would return any gas or done job or.....
 
-blockchain it self can't call API but chainlink can.    
+blockchain it self can't call API but chainlink can.     
+for intracting with contracts we need two things:
+1.ABI
+2.Address
+when we use interface the interface itself give the ABI.
+decimal not working in solidity.
+
+safe math:
+checked and unchecked is use for the size of variable and this problem is solved in solidity 0.8.0.
+unchecked keywork use less gasprice.
