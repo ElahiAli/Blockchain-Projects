@@ -9,3 +9,7 @@ EVM can access and store information in six places:
 array,struct,map is the special type in solidity.
 string is an array.
 
+inheritance:
+we can inheritance with importting the right contract and using the "is" like firstcontract is secondcontract that's it.
+override:
+for overriding a function we need to add the word "virtual" to the function.
