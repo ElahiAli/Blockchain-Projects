@@ -14,5 +14,5 @@ the money can be <strong>withdraw</strong> only by the owner of contract.<br/>
 learning how to build our own <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/PriceConverter.sol'>library</a> and use it in our files.<br/>
 we also import interface and getting the version and <strong>convert the currency</strong> and storing the funders.<br/>
 using <strong>constructor</strong> that immediatly excute after contract excution.<br/>
-get familiar with special functions like <a href=''>receive and fallback</a>
+get familiar with special functions like <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/FallbackExample.sol'>receive and fallback</a>
 also get familiar with keyword like <strong>external</strong> and <strong>immutable</strong> and <strong>constant</strong> etc...
