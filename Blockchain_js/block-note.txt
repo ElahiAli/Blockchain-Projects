@@ -1,0 +1,56 @@
+EVM can access and store information in six places:
+1.stack
+2.Memory : only during the transaction call.
+3.Storage : exist as global variable.perment variabel and can be modify.
+4.Calldata : temporary type that can't be modify.
+5.Code
+6.Logs
+
+array,struct,map is the special type in solidity.
+string is an array.
+
+inheritance:
+we can inheritance with importting the right contract and using the "is" like firstcontract is secondcontract that's it.
+override:
+for overriding a function we need to add the word "virtual" to the function.
+revert:
+if our require condition is not currect then it would return any gas or done job or.....
+
+blockchain it self can't call API but chainlink can.     
+for intracting with contracts we need two things:
+1.ABI
+2.Address
+when we use interface the interface itself give the ABI.
+decimal not working in solidity.
+
+safe math:
+checked and unchecked is use for the size of variable and this problem is solved in solidity 0.8.0.
+unchecked keyword use less gasprice.
+
+withdraw money with 3 way:
+1.transfer: size of gas is so important, if the gasprice pass 2300 it return error.auto revert. 
+2.send: use 2300 gasprice it would return boolean if fail and it's not auto revert.
+3.call: return two variable, second one is not important for now.second variable type "bytes memory dataReturned".
+
+constructor: is function that imediatly excut after deploying the contract.
+
+Advance solidity:
+constant: this keyword is for variable that would not change during the program.
+and also it use less gas.
+
+immutable: save gas and is use for variable that set only one time.
+variable only once can be set.
+
+custom error: using "if" instead of "require" and need to call it.
+
+revert: we can revert middel of the function or somewhere else it's just like require
+revert is some kind of error-handler keyword.
+
+recieve(): is special function that would trigger when we send a transaction to a function with
+empty call data.(0Eth or less & more).
+
+fallback(): is special function that would trigger when we send a transaction to a function with
+data in call data.(0Eth or less & more).
+
+both of fallback and recieve are just like constructor, all of them are special function.
+

@@ -9,10 +9,10 @@ library PriceConverter {
         //ABI
         //Address 	0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e
         AggregatorV3Interface priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
-        (,int price,,,,) = priceFeed.latestRoundData();
+        (,int answer,,,,) = priceFeed.latestRoundData();
         //ETH in terms of USD
         //3000.00000000
-        return uint256(priceFeed * 1e10); // 1**10 = 10000000000
+        return uint256(answer * 1e10); // 1**10 = 10000000000
     }
 
     function getVersion() internal view returns(uint256) {
