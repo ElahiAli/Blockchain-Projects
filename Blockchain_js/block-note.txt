@@ -61,4 +61,14 @@ await: wait for any promise function to be fulfilled or rejected.
 
 command for compile : yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol
 create scripts in package.json for simpling the command.
- 
+
+in the js require works as import.
+
+for deploy we need: ABI and Bynary.
+js : `` backtic like fstring.
+
+for readign from .env we need to add dotenv tool.
+
+writting encripted file: 7:41
+
+quicknode - moralis.io - infura - alchemy
