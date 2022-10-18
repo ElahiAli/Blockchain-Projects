@@ -72,3 +72,16 @@ for readign from .env we need to add dotenv tool.
 writting encripted file: 7:41
 
 quicknode - moralis.io - infura - alchemy
+yarn = npm
+yarn = npx
+
+Hardhat Setting:
+1.yarn init
+2.yarn add --dev hardhat
+3.yarn hardhat
+4.yarn hardhat -> options
+Done.
+
+commands:
+there is problem with accounts, we need to add script to hardhat.config.js to solve it.
+
