@@ -85,3 +85,9 @@ Done.
 commands:
 there is problem with accounts, we need to add script to hardhat.config.js to solve it.
 
+Networks:
+need to add the new network RPC_url to hardhat.config.js file.
+
+Verfication:
+yarn add --dev @nomiclabs/hardhat-etherscan
+

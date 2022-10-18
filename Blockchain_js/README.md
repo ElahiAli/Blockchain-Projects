@@ -32,3 +32,6 @@ we can add a lot of override to the deploy function, override like: gasLimit,gas
 learn how to write scripts for long commands and make it shorter.<br/>
 start working with <strong>testnet(Goerli)</strong> and deploying contract with it.<br/>
 we get familiar with different RPC Urls like Alchemy, Infura, Quicknode...<br/>
+iteracting with contracts in SimpleStorage.sol file.<br/>
+
+### SimpleStorage-hardhat:
