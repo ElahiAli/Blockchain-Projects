@@ -57,7 +57,7 @@ async function main() {
   const transactionReceipt = await transactionResponse.wait(1);
   const updatedFavoriteNumber = await contract.retrieve();
   console.log(`Updated Favorite Number: ${updatedFavoriteNumber}`);
-}
+
 
 main()
   .then(() => process.exit(0))
