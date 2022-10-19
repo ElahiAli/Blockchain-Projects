@@ -118,3 +118,19 @@ yarn hardhat coverage
 
 Hardhat Waffle:
 some kind of test. 
+
+Solhint:
+yarn solhint contract/*.sol ->it's gonna lint our solidity code. finding error in the code and orgnizing it.
+yarn add solhint
+yarn solhint --init ->json file
+add following to file -> {{
+"extends": "solhint:recommended",
+    "plugins": [],
+    "rules": {
+      "avoid-suicide": "error",
+      "avoid-sha3": "warn"
+    }
+}
+yarn solhint contracts/*.sol
+
+
