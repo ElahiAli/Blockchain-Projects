@@ -42,4 +42,4 @@ I get familiar with writting Tasks in hardhat.config.js or in other ways.<br/>
 like before I try some iteraction with other functions like addPerson.<br/>
 learn to verify transaction in etherscan and in the code.<br/>
 working with more networks like localhost(node),*we can run the node with this command*: `yarn hardhat node` <br/>
-for using different networks in hardhat we need to add the **network's url and PrivateKey** to hardhat.config.js file.
+for using different networks in hardhat we need to add the **network's url and PrivateKey** to hardhat.config.js file

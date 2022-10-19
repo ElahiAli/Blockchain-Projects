@@ -106,3 +106,15 @@ inside every function we have a beforeEach() and bunch of it().
 commands:
 yarn hardhat test
 yarn hardhat test --grep store(key in the string). or use .only in code. it.only
+
+Gas reporting:
+yarn add hardhat-gas-reporter --dev
+yarn hardhat test
+
+Test coverage:
+this is a package for protactting our code.
+yarn add --dev solidity-coverage 
+yarn hardhat coverage
+
+Hardhat Waffle:
+some kind of test. 
