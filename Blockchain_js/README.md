@@ -34,4 +34,12 @@ start working with <strong>testnet(Goerli)</strong> and deploying contract with 
 we get familiar with different RPC Urls like Alchemy, Infura, Quicknode...<br/>
 iteracting with contracts in SimpleStorage.sol file.<br/>
 
-### SimpleStorage-hardhat:
+### <a href="https://github.com/ElahiAli/Blockchain-Tutorial/tree/master/Blockchain_js/hh-fcc/hardhat-simple-storage">SimpleStorage-hardhat:</a>
+Hardhat is a development environment that helps developers in testing, compiling, deploying, and debugging dApps on the Ethereum blockchain.<br/>
+in this simple project I learned how to compile and deploy with hardhat.<br/>
+*for run the project in hardhat default network*: `yarn hardhat run scripts/deploy.js`<br/>
+I get familiar with writting Tasks in hardhat.config.js or in other ways.<br/>
+like before I try some iteraction with other functions like addPerson.<br/>
+learn to verify transaction in etherscan and in the code.<br/>
+working with more networks like localhost(node),*we can run the node with this command*: `yarn hardhat node` <br/>
+for using different networks in hardhat we need to add the **network's url and PrivateKey** to hardhat.config.js file.
