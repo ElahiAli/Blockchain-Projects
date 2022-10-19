@@ -76,7 +76,7 @@ yarn = npm
 yarn = npx
 
 Hardhat Setting:
-1.yarn init
+1.yarn init -> new project
 2.yarn add --dev hardhat
 3.yarn hardhat
 4.yarn hardhat -> options
