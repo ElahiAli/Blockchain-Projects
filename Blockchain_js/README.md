@@ -22,7 +22,7 @@ using <strong>constructor</strong> that immediatly excute after contract excutio
 get familiar with special functions like <a href='https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/FallbackExample.sol'>receive and fallback</a>
 also get familiar with keyword like <strong>external</strong> and <strong>immutable</strong> and <strong>constant</strong> etc..
 
-## <a href="https://github.com/ElahiAli/Blockchain-Tutorial/tree/master/Blockchain_js/hh-fcc/ethers-simple-storage">Ether.js:</a>:
+## <a href="https://github.com/ElahiAli/Blockchain-Tutorial/tree/master/Blockchain_js/hh-fcc/ethers-simple-storage">Ether.js:</a>
 
 ### Installing ether:
 
