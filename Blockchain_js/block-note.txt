@@ -87,7 +87,12 @@ there is problem with accounts, we need to add script to hardhat.config.js to so
 
 Networks:
 need to add the new network RPC_url to hardhat.config.js file.
+yarn hardhat node: start local node network just like ganache.
 
 Verfication:
 yarn add --dev @nomiclabs/hardhat-etherscan
+
+Tasks: 
+we can write scripts in hardhat.config or in seperate file named tasks.
+
 
