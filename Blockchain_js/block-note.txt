@@ -95,4 +95,14 @@ yarn add --dev @nomiclabs/hardhat-etherscan
 Tasks: 
 we can write scripts in hardhat.config or in seperate file named tasks.
 
+Hardhat Console:
+yarn hardhat console --network hardhat or localhost or anyother network.
 
+deleting the cache and artifacts:
+yarn hardhat clean
+
+Tests:
+inside every function we have a beforeEach() and bunch of it().
+commands:
+yarn hardhat test
+yarn hardhat test --grep store(key in the string). or use .only in code. it.only
