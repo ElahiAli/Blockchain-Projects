@@ -24,38 +24,15 @@ also get familiar with keyword like <strong>external</strong> and <strong>immuta
 
 ## <a href="https://github.com/ElahiAli/Blockchain-Tutorial/tree/master/Blockchain_js/hh-fcc/ethers-simple-storage">Ether.js:</a>
 
-### Installing ether:
-
-`yarn add ether`
-
-### Compile solidity file:
-
-`yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol`
-
-### Run deploy file:
-
-`node deploy.js`
+**Installing ether:** `yarn add ether`<br/>
+**Compile solidity file:** `yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol`<br/>
+**Run deploy file:** `node deploy.js`<br/>
 
 ## <a href="https://github.com/ElahiAli/Blockchain-Tutorial/tree/master/Blockchain_js/hh-fcc/hardhat-simple-storage">SimpleStorage-hardhat:</a>
 
-### Initial new project:
-
-`yarn init`
-
-### To use your local installation of Hardhat:
-
-`yarn add --dev hardhat`
-
-### Install Hardhat:
-
-`yarn hardhat`
-
-### Compiling your contracts:
-
-`yarn hardhat compile`
-
-### Deploying your contracts:
-
-`yarn hardhat run scripts/deploy.js`
-
-### <a href="https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/hh-fcc/hardhat-simple-storage/README.md">Hardhat commands</a>
+**Initial new project:** `yarn init`<br/>
+**To use your local installation of Hardhat:** `yarn add --dev hardhat`<br/>
+**Install Hardhat:** `yarn hardhat`<br/>
+**Compiling your contracts:** `yarn hardhat compile`<br/>
+**Deploying your contracts:** `yarn hardhat run scripts/deploy.js`<br/>
+**<a href="https://github.com/ElahiAli/Blockchain-Tutorial/blob/master/Blockchain_js/hh-fcc/hardhat-simple-storage/README.md">Hardhat commands</a>**
