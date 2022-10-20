@@ -58,6 +58,15 @@ async function main() {
   const updatedFavoriteNumber = await contract.retrieve();
   console.log(`Updated Favorite Number: ${updatedFavoriteNumber}`);
 
+  const getNameAndNumber = await contract.addPerson("ali", "9");
+  await getNameAndNumber.wait(1);
+
+  const peopleIndex = await contract.people(0);
+  console.log(`First person: ${peopleIndex}`);
+
+  const nameToNumber = await contract.nameToFavoriteNumber("ali");
+  console.log(`ali's favorite number is: ${nameToNumber}`);
+}
 
 main()
   .then(() => process.exit(0))
