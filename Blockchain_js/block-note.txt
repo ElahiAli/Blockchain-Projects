@@ -133,4 +133,12 @@ add following to file -> {{
 }
 yarn solhint contracts/*.sol
 
+Install chainlink:
+yarn add --dev @chainlink/contracts
+config.js -> require("hardhat-deploy")
+
+for makeing deploying easier:
+yarn add --dev hardhat-deploy
+
+hre = hardhat runtime environment
 
