@@ -142,3 +142,18 @@ yarn add --dev hardhat-deploy
 
 hre = hardhat runtime environment
 
+Running only Mock:
+yarn hardhat deploy --tags mocks
+
+hardhat -> network:
+yarn hardhat deploy --network goerli
+
+solidity style Guide:
+Error: error contractname__errorname;
+
+Create auto Docs:  -> solc --userdoc --devdoc ex1.sol
+/**@title fslkakj 
+  *@auther lkjfsdj
+  *@notice lkfsj
+*/
+
