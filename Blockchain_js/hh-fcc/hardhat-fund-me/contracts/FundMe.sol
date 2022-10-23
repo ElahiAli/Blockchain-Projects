@@ -3,7 +3,7 @@ pragma solidity ^0.8.8;
 
 import "./PriceConverter.sol";
 
-error NotOwner();
+error FundMe__NotOwner();
 
 contract FundMe {
     //using library for specific type
@@ -15,12 +15,28 @@ contract FundMe {
     mapping(address => uint256) public addressToAmountFunded;
 
     address public immutable i_owner;
-
     AggregatorV3Interface public priceFeed;
+
+    modifier onlyOwner() {
+        // require(msg.sender == i_owner, "Sender is not the owner!");
+        if (msg.sender != i_owner) {
+            revert FundMe__NotOwner();
+        }
+        _;
+    }
 
     constructor(address priceFeedAddress) {
         i_owner = msg.sender;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
+    }
+
+    //if someone accedently send money or call the wrong function receive will call the fund function.
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 
     function fund() public payable {
@@ -65,22 +81,5 @@ contract FundMe {
             value: address(this).balance
         }("");
         require(callSuccess, "call failed!");
-    }
-
-    modifier onlyOwner() {
-        // require(msg.sender == i_owner, "Sender is not the owner!");
-        if (msg.sender != i_owner) {
-            revert NotOwner();
-        }
-        _;
-    }
-
-    //if someone accedently send money or call the wrong function receive will call the fund function.
-    receive() external payable {
-        fund();
-    }
-
-    fallback() external payable {
-        fund();
     }
 }
