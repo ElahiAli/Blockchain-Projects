@@ -162,4 +162,7 @@ unit tests are done locally
 -local hardhat
 staging test can be done on a testnet (LAST STOP!!!)
 
-
+Advance:(gas optimization):
+all the state variable would store in Storage, the storage is somekind of array.
+dynamic variabe in the storage like a array or list or etc use somekind of hash to store the objects.
+constant and immutable are not stored in storage.
