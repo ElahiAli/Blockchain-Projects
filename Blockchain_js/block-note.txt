@@ -157,3 +157,9 @@ Create auto Docs:  -> solc --userdoc --devdoc ex1.sol
   *@notice lkfsj
 */
 
+unit tests are done locally
+-hardhat 
+-local hardhat
+staging test can be done on a testnet (LAST STOP!!!)
+
+
