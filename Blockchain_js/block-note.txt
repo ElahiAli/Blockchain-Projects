@@ -166,3 +166,16 @@ Advance:(gas optimization):
 all the state variable would store in Storage, the storage is somekind of array.
 dynamic variabe in the storage like a array or list or etc use somekind of hash to store the objects.
 constant and immutable are not stored in storage.
+
+LOTTERY:
+1. yarn add --dev hardhat
+2. yarn hardhat
+3. yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle chai ethereum-waffle hardhat hardhat-contract-sizer hardhat-deploy hardhat-gas-reporter prettier prettier-plugin-solidity solhint solidity-coverage dotenv
+4. add the packages to hardhat.config.js -> require("")
+5. add .prettierrc file
+6. add contract folder and Lottery.sol file
+
+
+
+tip: require use gas way more than if.
+
