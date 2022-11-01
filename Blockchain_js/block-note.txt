@@ -174,8 +174,8 @@ LOTTERY:
 4. add the packages to hardhat.config.js -> require("")
 5. add .prettierrc file
 6. add contract folder and Lottery.sol file
-
-
+7. when importing vrf -> yarn add --dev @chainlink/contracts
+8. after add VRFComsumerBaseV2 to the constructor -> yarn hardhat compile
 
 tip:
 require use gas way more than if.
@@ -188,4 +188,21 @@ this events and logs live in special data structure that isn't accessible to sma
 eachone of this Events are tied to one contract or address.
 chainlink listening to request data events
 IN THE CODE:
-two type of parameters: Index and noneIndex
+two type of parameters: Index and nonIndex
+when we emit the event it's gonna store the passing variabe to the storage.
+
+Introduction to chainlink VRF:(version2):
+
+tip:
+we want our Raffle to cnsume the vrf inharit from the vrf.
+after inharitance function fulfillRandomWords can get variabe.  
+most of the thing are from VRF chainlink docs.
+
+Hardhat shorthand:
+yarn global add hardhat-shorthand -> hh command
+
+Chainlink Keepers:
+there is two method:
+1. checkUpkeep: this is run off chain by a node from the channeling keeper network __ in our case it's gonna check
+that it's time to get random number or not.
+2. performUpkeep: verifing the thing on chain to be correct,then actually make the state change. 
