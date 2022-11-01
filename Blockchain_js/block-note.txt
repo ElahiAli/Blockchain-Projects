@@ -177,5 +177,15 @@ LOTTERY:
 
 
 
-tip: require use gas way more than if.
+tip:
+require use gas way more than if.
+event: Emit an event when we update a dynamic array or mapping.
 
+Login and Events:
+log is somekind of structure
+events allow you to "print" stuff to this log
+this events and logs live in special data structure that isn't accessible to smart contract that's why it's cheaper.
+eachone of this Events are tied to one contract or address.
+chainlink listening to request data events
+IN THE CODE:
+two type of parameters: Index and noneIndex
