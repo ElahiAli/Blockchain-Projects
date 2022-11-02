@@ -206,3 +206,4 @@ there is two method:
 1. checkUpkeep: this is run off chain by a node from the channeling keeper network __ in our case it's gonna check
 that it's time to get random number or not.
 2. performUpkeep: verifing the thing on chain to be correct,then actually make the state change. 
+

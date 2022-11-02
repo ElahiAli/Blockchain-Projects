@@ -14,8 +14,16 @@ import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 
 error Raffle__NotEnoughETHEntered();
 error Raffle__TransferFaild();
+error Raffle__NotOpen();
 
 contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
+    /* Type declaration */
+    // enum is somekind of type that we can store state or different state in it.
+    enum RaffleState {
+        OPEN,
+        CALCULATING
+    } //uint256 0 = OPEN, 1 = CALCULATING
+
     /*State Variable */
     uint256 private immutable i_entranceFee;
     address payable[] private s_players; //it's payable because the winner get payed.
@@ -28,6 +36,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     // Lottery Variable
     address private S_recentWinner;
+    RaffleState private s_raffleState;
 
     /* Events */
     event RaffleEnter(address indexed players);
@@ -48,6 +57,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         i_gasLane = gasLane;
         i_subscriptionId = subscriptionId;
         i_callbackGasLimit = callbackGasLimit;
+        s_raffleState = RaffleState.OPEN;
     }
 
     function enterRaffle() public payable {
@@ -55,6 +65,9 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         // require(msg.value > i_entranceFee,"not enough ETH")
         if (msg.value < i_entranceFee) {
             revert Raffle__NotEnoughETHEntered();
+        }
+        if (s_raffleState != RaffleState.OPEN) {
+            revert Raffle__NotOpen();
         }
         s_players.push(payable(msg.sender)); //typecasted because it only accept payable address.
         emit RaffleEnter(msg.sender);
@@ -64,13 +77,20 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
      * @dev This is the function that Chainlink keeper nodes call
      * they look for the `upkeepNeeded` to return true
      * The following should be true in order to return true:
+     * 1. Our time interval should have passed
+     * 2. The lottery should have at least 1 player, and have some ETH
+     * 3. Our subscription is funded with LINK
+     * 4. The lottery should be in an "open" state.
      */
     function checkUpkeep(
         bytes calldata /*checkData*/
-    ) external override {}
+    ) external override {
+        bool isOpen = (RaffleState.OPEN == s_raffleState); //if s_raffleState is open the isOpen is True.
+    }
 
     function requestRandomWinner() external {
         //it request uint256 id
+        s_raffleState = RaffleState.CALCULATING;
         uint256 requestId = i_vrfCoordinator.requestRandomWords(
             i_gasLane, //keyHash
             i_subscriptionId, //subscriptionId that contract use for funding
@@ -88,6 +108,8 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         uint256 indexOfWinner = randomWords[0] % s_players.length;
         address payable recentWinner = s_players[indexOfWinner];
         S_recentWinner = recentWinner;
+        s_raffleState = RaffleState.OPEN;
+        s_players = new address payable[](0);
         (bool success, ) = recentWinner.call{value: address(this).balance}(""); //send all the money in the contracts for winner.
         if (!success) {
             revert Raffle__TransferFaild();
