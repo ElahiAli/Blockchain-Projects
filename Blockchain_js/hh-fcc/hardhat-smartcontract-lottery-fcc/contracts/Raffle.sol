@@ -15,7 +15,14 @@ import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 error Raffle__NotEnoughETHEntered();
 error Raffle__TransferFaild();
 error Raffle__NotOpen();
+error Raffle__UpKeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
 
+/**
+ * @title A sample Raffle contract
+ * @author Ali Elahi
+ * @notice This contract is for creating an untemperable decentralized smart contract
+ * @dev This implement Chainlink VRF v2 and Chainlink Keepers
+ */
 contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     /* Type declaration */
     // enum is somekind of type that we can store state or different state in it.
@@ -33,6 +40,8 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     uint32 private immutable i_callbackGasLimit;
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORD = 1;
+    uint256 private s_lastTimeStamp;
+    uint256 private immutable i_interval;
 
     // Lottery Variable
     address private S_recentWinner;
@@ -50,7 +59,8 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         uint256 enteranceFee,
         bytes32 gasLane,
         uint64 subscriptionId,
-        uint32 callbackGasLimit
+        uint32 callbackGasLimit,
+        uint256 interval
     ) VRFConsumerBaseV2(vrfCoordinatorV2) {
         i_entranceFee = enteranceFee;
         i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinatorV2);
@@ -58,8 +68,11 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         i_subscriptionId = subscriptionId;
         i_callbackGasLimit = callbackGasLimit;
         s_raffleState = RaffleState.OPEN;
+        s_lastTimeStamp = block.timestamp;
+        i_interval = interval;
     }
 
+    /*Functions*/
     function enterRaffle() public payable {
         //check the entranceFee
         // require(msg.value > i_entranceFee,"not enough ETH")
@@ -83,21 +96,46 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
      * 4. The lottery should be in an "open" state.
      */
     function checkUpkeep(
-        bytes calldata /*checkData*/
-    ) external override {
-        bool isOpen = (RaffleState.OPEN == s_raffleState); //if s_raffleState is open the isOpen is True.
+        bytes memory /* checkData */
+    )
+        public
+        view
+        override
+        returns (
+            bool upkeepNeeded,
+            bytes memory /* performData */
+        )
+    {
+        bool isOpen = RaffleState.OPEN == s_raffleState; //if s_raffleState is open the isOpen is True.
+        //block.timestamp(current block time) - last block timestamp  > interval?
+        bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
+        bool hasPlayers = s_players.length > 0;
+        bool hasBalance = address(this).balance > 0;
+        upkeepNeeded = (timePassed && isOpen && hasBalance && hasPlayers); //if this boolean is true then time to get the new number
+        return (upkeepNeeded, "0x0");
     }
 
-    function requestRandomWinner() external {
-        //it request uint256 id
+    function performUpkeep(
+        bytes calldata /* performData */
+    ) external override {
+        (bool upkeepNeeded, ) = checkUpkeep("");
+        // require(upkeepNeeded, "Upkeep not needed");
+        if (!upkeepNeeded) {
+            revert Raffle__UpKeepNotNeeded(
+                address(this).balance,
+                s_players.length,
+                uint256(s_raffleState)
+            );
+        }
         s_raffleState = RaffleState.CALCULATING;
         uint256 requestId = i_vrfCoordinator.requestRandomWords(
-            i_gasLane, //keyHash
-            i_subscriptionId, //subscriptionId that contract use for funding
-            REQUEST_CONFIRMATIONS, //how many block should wait.
-            i_callbackGasLimit, //how much gas to use for the callback request to contract's fulfillRandomWords()
-            NUM_WORD //how many random number we gonna get.
+            i_gasLane,
+            i_subscriptionId,
+            REQUEST_CONFIRMATIONS,
+            i_callbackGasLimit,
+            NUM_WORD
         );
+        // Quiz... is this redundant?
         emit RequestedRaffleWinner(requestId);
     }
 
@@ -110,6 +148,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         S_recentWinner = recentWinner;
         s_raffleState = RaffleState.OPEN;
         s_players = new address payable[](0);
+        s_lastTimeStamp = block.timestamp;
         (bool success, ) = recentWinner.call{value: address(this).balance}(""); //send all the money in the contracts for winner.
         if (!success) {
             revert Raffle__TransferFaild();
@@ -129,5 +168,25 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     function getRecentWinner() public view returns (address) {
         return S_recentWinner;
+    }
+
+    function getRaffleState() public view returns (RaffleState) {
+        return s_raffleState;
+    }
+
+    function getNumWords() public pure returns (uint256) {
+        return NUM_WORD;
+    }
+
+    function geNumberOfPlayers() public view returns (uint256) {
+        return s_players.length;
+    }
+
+    function getLatestTimeStamp() public view returns (uint256) {
+        return s_lastTimeStamp;
+    }
+
+    function getRequestConfirmations() public pure returns (uint256) {
+        return REQUEST_CONFIRMATIONS;
     }
 }
