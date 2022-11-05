@@ -176,6 +176,11 @@ LOTTERY:
 6. add contract folder and Lottery.sol file
 7. when importing vrf -> yarn add --dev @chainlink/contracts
 8. after add VRFComsumerBaseV2 to the constructor -> yarn hardhat compile
+9. after complete the contract create deploy folder and in the folder add 01-deploy-raffle.js file
+10. add .env and in hardhat.config add network settings
+11. add helper-hardhat-config.js file 
+12. add 00-deploy-mocks.js file
+13. for creating mocks -> add folder named test to contracts and file in it named VRFCoordinatorV2Mock.sol
 
 tip:
 require use gas way more than if.
