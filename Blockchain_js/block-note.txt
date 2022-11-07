@@ -183,6 +183,8 @@ LOTTERY:
 13. for creating mocks -> add folder named test to contracts and file in it named VRFCoordinatorV2Mock.sol
 14. for verify we add a folder utils and file in it named verify.js
 15. affter complete the deploy scripts -> yarn hardhat deploy
+16. create a folder named test and a folder in it named unit and a file in it named raffle.test.js
+
 
 tip:
 require use gas way more than if.
