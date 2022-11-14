@@ -41,4 +41,5 @@ module.exports = {
             default: 1,
         },
     },
+    mocha: 200000, //200 seconds max
 };
