@@ -28,9 +28,9 @@ checked and unchecked is use for the size of variable and this problem is solved
 unchecked keyword use less gasprice.
 
 withdraw money with 3 way:
-1.transfer: size of gas is so important, if the gasprice pass 2300 it return error.auto revert. 
+1.transfer: size of gas is so important, if the gasprice pass 2300 it return error. auto revert. 
 2.send: use 2300 gasprice it would return boolean if fail and it's not auto revert.
-3.call: return two variable, second one is not important for now.second variable type "bytes memory dataReturned".
+3.call: return two variable, second one is not important for now. second variable type "bytes memory dataReturned".
 
 constructor: is function that imediatly excut after deploying the contract.
 
@@ -59,7 +59,7 @@ learn some markdown!!!
 if we use "async" befor function then we can use await keyword 
 await: wait for any promise function to be fulfilled or rejected.
 
-command for compile : yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol
+command for compile : `yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol`
 create scripts in package.json for simpling the command.
 
 in the js require works as import.
@@ -76,10 +76,10 @@ yarn = npm
 yarn = npx
 
 Hardhat Setting:
-1.yarn init -> new project
-2.yarn add --dev hardhat
-3.yarn hardhat
-4.yarn hardhat -> options
+1.`yarn init -> new project`
+2.`yarn add --dev hardhat`
+3.`yarn hardhat`
+4.`yarn hardhat` -> options
 Done.
 
 commands:
@@ -90,39 +90,39 @@ need to add the new network RPC_url to hardhat.config.js file.
 yarn hardhat node: start local node network just like ganache.
 
 Verfication:
-yarn add --dev @nomiclabs/hardhat-etherscan
+`yarn add --dev @nomiclabs/hardhat-etherscan`
 
 Tasks: 
 we can write scripts in hardhat.config or in seperate file named tasks.
 
 Hardhat Console:
-yarn hardhat console --network hardhat or localhost or anyother network.
+`yarn hardhat console --network hardhat` or localhost or anyother network.
 
 deleting the cache and artifacts:
-yarn hardhat clean
+`yarn hardhat clean`
 
 Tests:
 inside every function we have a beforeEach() and bunch of it().
 commands:
-yarn hardhat test
-yarn hardhat test --grep store(key in the string). or use .only in code. it.only
+`yarn hardhat test`
+`yarn hardhat test --grep store`(key in the string). or use .only in code. it.only
 
 Gas reporting:
-yarn add hardhat-gas-reporter --dev
-yarn hardhat test
+`yarn add hardhat-gas-reporter --dev`
+`yarn hardhat test`
 
 Test coverage:
 this is a package for protactting our code.
-yarn add --dev solidity-coverage 
-yarn hardhat coverage
+`yarn add --dev solidity-coverage `
+`yarn hardhat coverage`
 
 Hardhat Waffle:
 some kind of test. 
 
 Solhint:
-yarn solhint contract/*.sol ->it's gonna lint our solidity code. finding error in the code and orgnizing it.
-yarn add solhint
-yarn solhint --init ->json file
+`yarn solhint contract/*.sol` ->it's gonna lint our solidity code. finding error in the code and orgnizing it.
+`yarn add solhint`
+`yarn solhint --init` ->json file
 add following to file -> {{
 "extends": "solhint:recommended",
     "plugins": [],
@@ -131,22 +131,22 @@ add following to file -> {{
       "avoid-sha3": "warn"
     }
 }
-yarn solhint contracts/*.sol
+`yarn solhint contracts/*.sol`
 
 Install chainlink:
-yarn add --dev @chainlink/contracts
+`yarn add --dev @chainlink/contracts`
 config.js -> require("hardhat-deploy")
 
 for makeing deploying easier:
-yarn add --dev hardhat-deploy
+`yarn add --dev hardhat-deploy`
 
 hre = hardhat runtime environment
 
 Running only Mock:
-yarn hardhat deploy --tags mocks
+`yarn hardhat deploy --tags mocks`
 
 hardhat -> network:
-yarn hardhat deploy --network goerli
+`yarn hardhat deploy --network goerli`
 
 solidity style Guide:
 Error: error contractname__errorname;
@@ -208,7 +208,7 @@ after inharitance function fulfillRandomWords can get variabe.
 most of the thing are from VRF chainlink docs.
 
 Hardhat shorthand:
-yarn global add hardhat-shorthand -> hh command
+`yarn global add hardhat-shorthand `-> hh command
 
 Chainlink Keepers:
 there is two method:
