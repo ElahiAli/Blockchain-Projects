@@ -1,3 +1,7 @@
+every block:
+block,nonce,data,previoushash = hash
+it also has the previous block hash
+
 EVM can access and store information in six places:
 1.stack
 2.Memory : only during the transaction call.
