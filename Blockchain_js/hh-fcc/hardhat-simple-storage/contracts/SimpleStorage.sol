@@ -33,11 +33,4 @@ contract SimpleStorage {
         //take name return number
         nameToFavoriteNumber[_name] = _favoriteNumber;
     }
-
-    function removePerson(uint256 _id) public {
-        for (uint i = _id; i < people.length - 1; i++) {
-            people[i] = people[i + 1];
-        }
-        people.pop();
-    }
 }
