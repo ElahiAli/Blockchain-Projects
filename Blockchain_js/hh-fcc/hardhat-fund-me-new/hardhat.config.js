@@ -6,7 +6,7 @@ require("hardhat-deploy");
 module.exports = {
 	defaultNetwork: "hardhat",
 	solidity: {
-		compilers: [{ version: "0.8.8" } || { version: "0.6.6" }],
+		compilers: [{ version: "0.8.8" }, { version: "0.6.6" }],
 	},
 	nameAccounts: {
 		deployer: {
