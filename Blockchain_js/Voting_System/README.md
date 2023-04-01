@@ -1,13 +1,13 @@
 # Sample Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
+This is a food voting system project in that the owner can choose some food for election and the users who have been registered in the contract can vote for the food.
+<br/>Try running some of the following tasks:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+yarn hardhat help
+yarn hardhat test
+REPORT_GAS=true yarn hardhat test
+yarn hardhat node
+yarn hadhat deploy --network localhost
+yarn hardhat run --network localhost scripts/vote.js
 ```
