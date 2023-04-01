@@ -17,7 +17,7 @@ async function main() {
 	await transactionRegister.wait(1);
 
 	console.log("Voting...");
-	const transactionResponse = await vote.vote("ali", 0, 3);
+	const transactionResponse = await vote.vote("ali", 0, 0);
 	await transactionResponse.wait(1);
 	console.log("Voted!");
 

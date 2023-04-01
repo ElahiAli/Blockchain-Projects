@@ -1,5 +1,4 @@
 const { network } = require("hardhat");
-
 developmentChains = ["hardhat", "localhost"];
 
 module.exports = async function ({ deployments, getNamedAccounts }) {
