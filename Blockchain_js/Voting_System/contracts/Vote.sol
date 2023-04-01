@@ -126,7 +126,7 @@ contract Vote is Ownable {
 	}
 
 	//getting participantes
-	function getParticipants() internal view returns (Participants[] memory) {
-		return registrationList;
-	}
+	// function getParticipants() internal view returns (Participants[] memory) {
+	// 	return registrationList;
+	// }
 }
