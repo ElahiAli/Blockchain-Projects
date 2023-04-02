@@ -6,7 +6,7 @@ This is a food voting system project in that the owner can choose some food for 
 ```shell
 yarn hardhat help
 yarn hardhat test
-REPORT_GAS=true yarn hardhat test
+yarn hardhat coverage
 yarn hardhat node
 yarn hadhat deploy --network localhost
 yarn hardhat run --network localhost scripts/vote.js
