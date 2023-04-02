@@ -1,5 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("hardhat-deploy");
+require("solidity-coverage");
+require("hardhat-gas-reporter");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -11,10 +13,20 @@ module.exports = {
 			chainId: 31337,
 		},
 	},
+	gasReporter: {
+		enabled: false,
+		outputFile: "gas-report.txt",
+		noColors: true,
+		currency: "USD",
+		// coinmarketcap: COINMARKETCAP_API_KEY, //get file for ETH to USD
+		// token: "ETH", //polygon
+	},
 	namedAccounts: {
 		deployer: {
 			default: 0,
-			1: 0,
+		},
+		client: {
+			default: 1,
 		},
 	},
 };
