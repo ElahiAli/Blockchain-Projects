@@ -16,6 +16,7 @@ contract Vote is Ownable {
 		uint256 age;
 		string election;
 		bool vote;
+		address id;
 	}
 
 	//different options for vote
@@ -23,7 +24,6 @@ contract Vote is Ownable {
 	Participants[] internal registrationList;
 	string[] internal foodElectionList;
 
-	mapping(string => address) internal nameToAddress;
 	mapping(string => mapping(string => uint256)) internal foodIndexToFoodVote;
 	mapping(address => uint256) internal addressToIndex;
 
@@ -53,17 +53,6 @@ contract Vote is Ownable {
 		_;
 	}
 
-	// registration of all Participants
-	function registration(
-		string memory _name,
-		uint256 _age,
-		string memory _election
-	) public ageLimit(_age) checkFoodExistent(_election) {
-		registrationList.push(Participants(_name, _age, _election, false));
-		nameToAddress[_name] = msg.sender;
-		addressToIndex[msg.sender] = (registrationList.length) - 1;
-	}
-
 	//Election list by Owner
 	function electionList(string[] calldata _foodName) public onlyOwner {
 		for (uint256 i = 0; i < _foodName.length; i++) {
@@ -71,12 +60,20 @@ contract Vote is Ownable {
 		}
 	}
 
-	//Vote counting && voting anonymously
-	function vote(
+	// registration of all Participants
+	function registration(
 		string memory _name,
-		uint256 _foodIndex,
-		uint256 _statusIndex
-	) public {
+		uint256 _age,
+		string memory _election
+	) public ageLimit(_age) checkFoodExistent(_election) {
+		registrationList.push(
+			Participants(_name, _age, _election, false, msg.sender)
+		);
+		addressToIndex[msg.sender] = (registrationList.length) - 1;
+	}
+
+	//Vote counting && voting anonymously
+	function vote(uint256 _foodIndex, uint256 _statusIndex) public {
 		if (
 			keccak256(
 				abi.encodePacked(
@@ -94,14 +91,14 @@ contract Vote is Ownable {
 
 		string[] memory electionsList = getElectionsList();
 		string[] memory options = getOptionsList();
-		if (nameToAddress[_name] != msg.sender) {
+		if (registrationList[addressToIndex[msg.sender]].id != msg.sender) {
 			revert Vote__NoteRegistered();
 		}
 		foodIndexToFoodVote[electionsList[_foodIndex]][options[_statusIndex]]++;
 	}
 
 	//Results publishing
-	function electionResult(
+	function getElectionResult(
 		string memory _foodName
 	)
 		public
@@ -129,4 +126,21 @@ contract Vote is Ownable {
 	// function getParticipants() internal view returns (Participants[] memory) {
 	// 	return registrationList;
 	// }
+
+	function getFoodIndexToFoodVote(
+		string memory _foodName,
+		string memory _foodStatus
+	) public view returns (uint256) {
+		return foodIndexToFoodVote[_foodName][_foodStatus];
+	}
+
+	function getAddressToIndex(address _address) public view returns (uint256) {
+		return addressToIndex[_address];
+	}
+
+	function getUsersDetail(
+		uint256 _index
+	) public view returns (Participants memory) {
+		return registrationList[_index];
+	}
 }
