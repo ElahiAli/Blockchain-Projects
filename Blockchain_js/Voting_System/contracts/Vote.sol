@@ -112,20 +112,15 @@ contract Vote is Ownable {
 		return (badVots, notbadVots, GoodVots, awesomeVots);
 	}
 
-	// showing different elections
+	// getting different elections
 	function getElectionsList() public view returns (string[] memory) {
 		return foodElectionList;
 	}
 
-	// showing different options
+	// getting different options
 	function getOptionsList() public view returns (string[] memory) {
 		return Options;
 	}
-
-	//getting participantes
-	// function getParticipants() internal view returns (Participants[] memory) {
-	// 	return registrationList;
-	// }
 
 	function getFoodIndexToFoodVote(
 		string memory _foodName,
