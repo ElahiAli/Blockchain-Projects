@@ -1,4 +1,4 @@
-# Sample Hardhat Project
+# Vote system Hardhat Project
 
 This is a food voting system project in that the owner can choose some food for election and the users who have been registered in the contract can vote for the food.
 <br/>Try running some of the following tasks:
