@@ -220,3 +220,11 @@ there is two method:
 that it's time to get random number or not.
 2. performUpkeep: verifing the thing on chain to be correct,then actually make the state change. 
 
+
+ERC20:
+what is an ERC20?
+it is an token that have been deployed to a chain. basicaly it's smart contract that actually represents a token.chain link is a ERC20 technically chainlink is ERC677 that some token get this upgrade but still compatible with ERC20.
+
+yarn add --dev @openzeppelin/contracts
+
+ 
