@@ -43,5 +43,18 @@ const {
         });
       });
 
-      describe("allowances");
+      describe("allowances", function () {
+        let anotherAddress;
+        beforeEach(async function () {
+          anotherAddress = await ethers.getContract("OurToken", client);
+        });
+        it("Should approve other address to spend token", async () => {
+          const tokentAmount = await ethers.utils.parseEther("10");
+          await ourToken.approve(client, tokentAmount);
+          await anotherAddress.transferFrom(deployer, client, tokentAmount);
+          expect(await anotherAddress.balanceOf(client)).to.be.equal(
+            tokentAmount
+          );
+        });
+      });
     });
