@@ -15,59 +15,59 @@ const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan
 const REPORT_GAS = process.env.REPORT_GAS || false;
 
 module.exports = {
-    defaultNetwork: "hardhat",
-    networks: {
-        hardhat: {
-            chainId: 31337,
-            forking: { url: MAINNET_RPC_URL },
-        },
-        localhost: {
-            chainId: 31337,
-        },
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      chainId: 31337,
+      // forking: { url: MAINNET_RPC_URL },
     },
-    // etherscan: {
-    //   // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
-    //   apiKey: {
-    //     sepolia: ETHERSCAN_API_KEY,
-    //     polygon: POLYGONSCAN_API_KEY,
-    //   },
-    //   customChains: [
-    //     {
-    //       network: "goerli",
-    //       chainId: 5,
-    //       urls: {
-    //         apiURL: "https://api-goerli.etherscan.io/api",
-    //         browserURL: "https://goerli.etherscan.io",
-    //       },
-    //     },
-    //   ],
-    // },
-    gasReporter: {
-        enabled: false,
-        currency: "USD",
-        outputFile: "gas-report.txt",
-        noColors: true,
-        // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    localhost: {
+      chainId: 31337,
     },
+  },
+  // etherscan: {
+  //   // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+  //   apiKey: {
+  //     sepolia: ETHERSCAN_API_KEY,
+  //     polygon: POLYGONSCAN_API_KEY,
+  //   },
+  //   customChains: [
+  //     {
+  //       network: "goerli",
+  //       chainId: 5,
+  //       urls: {
+  //         apiURL: "https://api-goerli.etherscan.io/api",
+  //         browserURL: "https://goerli.etherscan.io",
+  //       },
+  //     },
+  //   ],
+  // },
+  gasReporter: {
+    enabled: false,
+    currency: "USD",
+    outputFile: "gas-report.txt",
+    noColors: true,
+    // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+  },
 
-    namedAccounts: {
-        deployer: {
-            default: 0,
-            1: 0,
-        },
-        client: {
-            default: 1,
-        },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      1: 0,
     },
-    solidity: {
-        compilers: [
-            { version: "0.8.7" },
-            { version: "0.4.24" },
-            { version: "0.4.19" },
-            { version: "0.6.12" },
-        ],
+    client: {
+      default: 1,
     },
-    // mocha: {
-    //     timeout: 500000, // 500 seconds max for running tests
-    // },
+  },
+  solidity: {
+    compilers: [
+      { version: "0.8.7" },
+      { version: "0.4.24" },
+      { version: "0.4.19" },
+      { version: "0.6.12" },
+    ],
+  },
+  // mocha: {
+  //     timeout: 500000, // 500 seconds max for running tests
+  // },
 };
