@@ -134,3 +134,5 @@ contract RandomIpfsNft is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
 }
 
 // Token URI?
+// universal resurce identifier
+// that return some json in json part we gonna have the image so it's url that point to what this image actually look like.
