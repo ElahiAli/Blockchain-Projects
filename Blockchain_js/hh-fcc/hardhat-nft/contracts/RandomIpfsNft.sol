@@ -76,11 +76,11 @@ contract RandomIpfsNft is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
     emit NftRequested(requestId, msg.sender);
   }
 
-  function fulfillRandomWords(uint256 requestId, uint256[] memory randoemWords) internal override {
+  function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal override {
     address dogOwner = s_requestIdToSender[requestId];
     uint256 newTokenId = s_tokenCounter;
 
-    uint256 moddedRng = randoemWords[0] % MAX_CHANCE_VALUE;
+    uint256 moddedRng = randomWords[0] % MAX_CHANCE_VALUE;
 
     // 0 - 99
     // 7 - PUG
@@ -104,7 +104,7 @@ contract RandomIpfsNft is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
   }
 
   function getChanceArray() public pure returns (uint256[3] memory) {
-    return [10, 30, MAX_CHANCE_VALUE];
+    return [10, 40, MAX_CHANCE_VALUE];
   }
 
   function getBreedFromModdedRng(uint256 moddedRng) public pure returns (Breed) {
@@ -112,7 +112,7 @@ contract RandomIpfsNft is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
     uint256[3] memory chanceArray = getChanceArray();
 
     for (uint256 i = 0; i < chanceArray.length; i++) {
-      if (moddedRng >= cumulativeSum && moddedRng < cumulativeSum + chanceArray[i]) {
+      if (moddedRng >= cumulativeSum && moddedRng < chanceArray[i]) {
         return Breed(i);
       }
       cumulativeSum += chanceArray[i];
@@ -130,6 +130,10 @@ contract RandomIpfsNft is ERC721URIStorage, VRFConsumerBaseV2, Ownable {
 
   function getTokenCounter() public view returns (uint256) {
     return s_tokenCounter;
+  }
+
+  function getRequestedIdToSender(uint256 requestId) public view returns (address) {
+    return s_requestIdToSender[requestId];
   }
 }
 

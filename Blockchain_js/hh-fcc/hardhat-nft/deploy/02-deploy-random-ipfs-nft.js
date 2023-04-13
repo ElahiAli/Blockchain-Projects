@@ -34,10 +34,10 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
     tokenUris = await handelTokenUris();
   }
 
-  let vrfCoordinatorV2Address, subscreaptionId;
+  let vrfCoordinatorV2Address, vrfCoordinatorV2Mock, subscreaptionId;
 
   if (developmentChains.includes(network.name)) {
-    const vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");
+    vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");
     vrfCoordinatorV2Address = vrfCoordinatorV2Mock.address;
     const tx = await vrfCoordinatorV2Mock.createSubscription();
     const txReceipt = await tx.wait(1);
@@ -64,6 +64,9 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
     waitConfirmations: network.config.blockConfirmations || 1,
   });
   log("RandomIpfsNft Deployed.");
+
+  // add a consumer for our subscriptionId`
+  await vrfCoordinatorV2Mock.addConsumer(subscreaptionId, randomIpfsNft.address);
 
   if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     log("Verifying...");
