@@ -227,4 +227,9 @@ it is an token that have been deployed to a chain. basicaly it's smart contract 
 
 yarn add --dev @openzeppelin/contracts
 
+
+base64:
+returning a thing from base64 in solidity needs:
+yarn add --dev base64-sol
+
  
