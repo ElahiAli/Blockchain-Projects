@@ -3,3 +3,4 @@ artifacts
 node_modules
 coverage
 coverage.json
+deployments
