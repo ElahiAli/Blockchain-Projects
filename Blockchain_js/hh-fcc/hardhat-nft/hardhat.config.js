@@ -9,11 +9,10 @@ require("dotenv").config();
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
-const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey";
 const REPORT_GAS = process.env.REPORT_GAS || false;
-
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
@@ -23,6 +22,12 @@ module.exports = {
     },
     localhost: {
       chainId: 31337,
+    },
+    sepolia: {
+      url: SEPOLIA_RPC_URL,
+      accounts: [PRIVATE_KEY],
+      chainId: 11155111,
+      blockConfirmations: 6,
     },
   },
   // etherscan: {
@@ -55,9 +60,9 @@ module.exports = {
       default: 0,
       1: 0,
     },
-    client: {
-      default: 1,
-    },
+    // client: {
+    //   default: 1,
+    // },
   },
   solidity: {
     compilers: [
