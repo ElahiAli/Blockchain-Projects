@@ -9,7 +9,7 @@ contract dynamicNft is ERC721 {
   uint256 private s_tokenCounter;
   string private i_lowImageURI;
   string private i_highImageURI;
-  string private constant base64EncodedSvgPrefix = "data:image/svg+xml;base64";
+  string private constant base64EncodedSvgPrefix = "data:image/svg+xml;base64,";
   AggregatorV3Interface internal immutable i_priceFeed;
 
   mapping(uint256 => int256) s_tokenIdToHighValue;
@@ -45,7 +45,7 @@ contract dynamicNft is ERC721 {
   }
 
   function _baseURI() internal pure override returns (string memory) {
-    return "data:application/json;base64";
+    return "data:application/json;base64,";
   }
 
   function tokenURI(uint256 tokenId) public view override returns (string memory) {
@@ -66,11 +66,11 @@ contract dynamicNft is ERC721 {
             bytes(
               abi.encodePacked(
                 '{"name":"',
-                name(),
-                '", "description":"An NFT that changes based on the Chainlink Feed",',
-                '"attributes":" [{"trait_type":"coolness","value":100}], "image":"',
+                name(), // You can add whatever name here
+                '", "description":"An NFT that changes based on the Chainlink Feed", ',
+                '"attributes": [{"trait_type": "coolness", "value": 100}], "image":"',
                 imageURI,
-                ":}"
+                '"}'
               )
             )
           )
