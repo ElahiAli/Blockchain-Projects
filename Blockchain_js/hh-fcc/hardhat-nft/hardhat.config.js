@@ -30,23 +30,9 @@ module.exports = {
       blockConfirmations: 6,
     },
   },
-  // etherscan: {
-  //   // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
-  //   apiKey: {
-  //     sepolia: ETHERSCAN_API_KEY,
-  //     polygon: POLYGONSCAN_API_KEY,
-  //   },
-  //   customChains: [
-  //     {
-  //       network: "goerli",
-  //       chainId: 5,
-  //       urls: {
-  //         apiURL: "https://api-goerli.etherscan.io/api",
-  //         browserURL: "https://goerli.etherscan.io",
-  //       },
-  //     },
-  //   ],
-  // },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
+  },
   gasReporter: {
     enabled: false,
     currency: "USD",
