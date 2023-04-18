@@ -232,4 +232,36 @@ base64:
 returning a thing from base64 in solidity needs:
 yarn add --dev base64-sol
 
- 
+Proxy terminology:
+1. The implementation contract:
+- which has all our code of our protocol. when we upgrage, we launch a brand new implementation contract.
+
+2. The proxy Contract:
+- which points to which implementation is the "correct" one, and routes everyone's function calls to that contract
+
+3.The user:
+- They make calls to the proxy
+
+4. The admin:
+- This is the user (or group of users/voters) who upgrade to new implementation contracts.
+
+Funcion Selector:
+A 4 byte hash of a function naem and function signature that define a function
+
+Biggest Gotchas:
+1. Storage Clashes => we can only append storage variable to new implementation but we can't reorder or change old ones.
+
+2. Function selector Clashes => if two function use same selector it wouldn't compile .
+
+
+Transparent Proxy:
+user can use implementation functions and admin can use only admins functino.
+
+Universal Upgradeable Proxie:
+Admin only upgrade functions are in the implementation contracts instead of the proxy, use less gas and need to have upgrade method.
+
+Diamond Pattern:
+-multiple implementation contracts
+-dont need to upgrade all the contract only a chunck of it.
+
+
