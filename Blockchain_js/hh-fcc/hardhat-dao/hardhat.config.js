@@ -19,6 +19,7 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 31337,
+      allowUnlimitedContractSize: true,
       // forking: { url: MAINNET_RPC_URL },
     },
     localhost: {
@@ -60,6 +61,7 @@ module.exports = {
       { version: "0.6.12" },
     ],
   },
+
   // mocha: {
   //     timeout: 500000, // 500 seconds max for running tests
   // },
