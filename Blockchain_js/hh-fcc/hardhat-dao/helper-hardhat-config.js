@@ -24,6 +24,8 @@ const VOTING_DELAY = 1;
 const QUORUM_PERCENTAGE = 4;
 const developmentChains = ["hardhat", "localhost"];
 const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
+const NEW_STORE_VALUE = [777];
+const FUNCTION_CALL = "store";
 
 module.exports = {
   networkConfig,
@@ -33,4 +35,6 @@ module.exports = {
   VOTING_DELAY,
   QUORUM_PERCENTAGE,
   ADDRESS_ZERO,
+  NEW_STORE_VALUE,
+  FUNCTION_CALL,
 };
