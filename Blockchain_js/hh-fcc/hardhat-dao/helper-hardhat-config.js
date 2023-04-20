@@ -26,6 +26,8 @@ const developmentChains = ["hardhat", "localhost"];
 const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 const NEW_STORE_VALUE = [777];
 const FUNCTION_CALL = "store";
+const PROPOSAL_DESCRIPTION = "Proposal #1: Store 777 in the box";
+const PROPOSAL_FILE = "proposal.json";
 
 module.exports = {
   networkConfig,
@@ -37,4 +39,6 @@ module.exports = {
   ADDRESS_ZERO,
   NEW_STORE_VALUE,
   FUNCTION_CALL,
+  PROPOSAL_DESCRIPTION,
+  PROPOSAL_FILE,
 };
