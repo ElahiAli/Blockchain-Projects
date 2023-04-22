@@ -24,9 +24,9 @@ const VOTING_DELAY = 1;
 const QUORUM_PERCENTAGE = 4;
 const developmentChains = ["hardhat", "localhost"];
 const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
-const NEW_STORE_VALUE = [777];
+const NEW_STORE_VALUE = [77];
 const FUNCTION_CALL = "store";
-const PROPOSAL_DESCRIPTION = "Proposal #1: Store 777 in the box";
+const PROPOSAL_DESCRIPTION = "Proposal #1: Store 77 in the box";
 const PROPOSAL_FILE = "proposal.json";
 
 module.exports = {

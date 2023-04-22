@@ -5,3 +5,4 @@ coverage
 coverage.json
 deployments
 .env
+proposal.json
