@@ -35,10 +35,7 @@ async function propose(functionToCall, args, proposalDescription) {
   let proposal = JSON.parse(fs.readFileSync(PROPOSAL_FILE, "utf8"));
   proposal[network.config.chainId.toString()].push(proposalId.toString());
   fs.writeFileSync(PROPOSAL_FILE, JSON.stringify(proposal));
-
-  if (developmentChains.includes(network.name)) {
-    await moveBlock(VOTING_DELAY + 1);
-  }
+  console.log(`current proposal state is ${await governor.state(proposalId)}`);
 }
 
 propose(FUNCTION_CALL, NEW_STORE_VALUE, PROPOSAL_DESCRIPTION)
