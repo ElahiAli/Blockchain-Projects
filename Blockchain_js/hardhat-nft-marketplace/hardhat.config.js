@@ -19,12 +19,12 @@ module.exports = {
             chainId: 31337,
             blockConfirmations: 1,
         },
-        goerli: {
-            chainId: 5,
-            blockConfirmations: 6,
-            url: GOERLI_RPC_URL,
-            accounts: [PRIVATE_KEY],
-        },
+        // sepolia: {
+        //     url: SEPOLIA_RPC_URL,
+        //     accounts: [PRIVATE_KEY],
+        //     chainId: 11155111,
+        //     blockConfirmations: 6,
+        // },
     },
     gasReporter: {
         enabled: false,
