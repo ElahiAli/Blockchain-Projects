@@ -167,4 +167,12 @@ contract NftMarketplace {
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];
     }
+
+    function getOwner(address nftAddress, uint256 tokenId) external view returns (address) {
+        return IERC721(nftAddress).ownerOf(tokenId);
+    }
+
+    function getBalance(address account) external view returns (uint256) {
+        return account.balance;
+    }
 }
