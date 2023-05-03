@@ -264,4 +264,6 @@ Diamond Pattern:
 -multiple implementation contracts
 -dont need to upgrade all the contract only a chunck of it.
 
-
+Start Nextjs app:
+yarn create next-app .
+yarn dev -> opening UI
