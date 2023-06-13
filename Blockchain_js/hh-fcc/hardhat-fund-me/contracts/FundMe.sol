@@ -9,7 +9,7 @@ contract FundMe {
 	//using library for specific type
 	using PriceConverter for uint256;
 
-	uint256 public constant MINIMUM_USD = 50 * 1e18;
+	uint256 public constant MINIMUM_USD = 1 * 1e18;
 	//list of address.
 	address[] private s_funders;
 	mapping(address => uint256) private s_addressToAmountFunded;
@@ -107,11 +107,9 @@ contract FundMe {
 		return s_funders[index];
 	}
 
-	function getAddressToAmountFunded(address funder)
-		public
-		view
-		returns (uint256)
-	{
+	function getAddressToAmountFunded(
+		address funder
+	) public view returns (uint256) {
 		return s_addressToAmountFunded[funder];
 	}
 
