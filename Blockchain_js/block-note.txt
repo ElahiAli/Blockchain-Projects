@@ -267,3 +267,6 @@ Diamond Pattern:
 Start Nextjs app:
 yarn create next-app .
 yarn dev -> opening UI
+Install without SUDO:
+sudo yarn global add create-next-app 
+create-next-app
