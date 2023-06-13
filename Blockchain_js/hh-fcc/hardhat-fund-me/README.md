@@ -1,13 +1,22 @@
-# Sample Hardhat Project
+# Sample Hardhat and React Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project allow users to Fund the smart contract and withdraw from it.
 
 Try running some of the following tasks:
 
+## Hardhat
 ```shell
 npx hardhat help
 npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
+```
+
+## React
+```shell
+hh node
+cd fundme-react
+npm start
+
 ```
